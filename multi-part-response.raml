@@ -1,0 +1,16 @@
+#%RAML 1.0
+title: test-attachment
+
+/resource:
+  post:
+    responses:
+      200:
+        body:
+          multipart/form-data:
+            properties:
+                file1:
+                    type: file
+                    fileTypes: ['application/csv']
+                file2:
+                    type: file
+                    fileTypes: ['application/csv']   
