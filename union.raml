@@ -1,0 +1,55 @@
+#%RAML 1.0
+title: My API With Types
+types:
+  Phone:
+    type: object
+    properties:
+      manufacturer:
+        type: string
+      numberOfSIMCards:
+        type: number
+      kind: string
+  Notebook:
+    type: object
+    properties:
+      manufacturer:
+        type: string
+      numberOfUSBPorts:
+        type: number
+      kind: string
+  Device:
+    type: Phone | Notebook
+    
+# The following example defines two types and a third type which is a union of those two types.
+  CatOrDog:
+    type: Cat | Dog # elements: Cat or Dog
+  Cat:
+    type: object
+    properties:
+      name: string
+      color: string
+  Dog:
+    type: object
+    properties:
+      name: string
+      fangs: string
+# CatOrDog: # follows restrictions applied to the type 'Cat'
+#  name: Musia,
+#  color: brown
+
+# Imagine a more complex example of a union type used in a multiple inheritance type expression:
+   HasHome:
+     type: object
+     properties:
+       homeAddress: string
+   Cat:
+     type: object
+     properties:
+       name: string
+       color: string
+   Dog:
+     type: object
+     properties:
+       name: string
+       fangs: string       
+   HomeAnimal: [ HasHome ,  Dog | Cat ]
